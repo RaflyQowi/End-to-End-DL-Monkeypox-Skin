@@ -45,8 +45,6 @@ Follow these steps to set up and run the application:
 git clone https://github.com/RaflyQowi/End-to-End-DL-Monkeypox-Skin.git
 ```
 
-````
-
 ### Step 2: Set Up Python Virtual Environment
 
 ```bash
@@ -99,7 +97,5 @@ Include a troubleshooting section to address common issues users may encounter d
 Feel free to customize and adapt the instructions to suit your needs!
 
 ```
-
 This version includes a "Project Overview" section, which can briefly describe the project's goals and significance. Additionally, I've added a "Troubleshooting" section to help users address common issues. Adjust as needed!
 ```
-````
