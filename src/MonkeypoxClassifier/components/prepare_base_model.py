@@ -27,7 +27,7 @@ class PrepareBaseModel:
 
         # Create a Sequential model for the new classifier layers
         x = tf.keras.layers.Flatten()(model.output)
-        x = tf.keras.layers.Dense(units=256, activation="relu")(x)
+        x = tf.keras.layers.Dense(units=512, activation="relu")(x)
         prediction = tf.keras.layers.Dense(units=classes, activation="softmax")(x)
 
         # Define new model

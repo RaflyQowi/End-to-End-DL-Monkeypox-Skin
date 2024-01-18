@@ -52,6 +52,10 @@ class Training:
             **dataflow_kwargs
         )
 
+        # Print the mapping between class indices and class labels
+        class_indices_mapping = self.train_generator.class_indices
+        print("Class Indices Mapping:", class_indices_mapping)
+
     @staticmethod
     def save_model(path: Path, model: tf.keras.Model):
         model.save(path)
