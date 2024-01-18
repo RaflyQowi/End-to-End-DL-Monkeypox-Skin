@@ -1,48 +1,57 @@
-# MLOps on Image Classifications (Monkey Pox classification problem)
+# MLOps on Image Classifications (Monkeypox Classification)
 
-Welcome to the MLOps on Image Classifications Project! This repository is designed for learning MLOps using TensorFlow for deep learning, TensorBoard for tracking callbacks, and DVC for building pipelines. The project provides a hands-on experience to understand and implement MLOps concepts in a real-world scenario.
+Welcome to the MLOps on Image Classifications Project! This repository serves as a hands-on guide for implementing MLOps using TensorFlow for deep learning, TensorBoard for tracking callbacks, and DVC for building pipelines. Gain practical experience in MLOps concepts within a real-world scenario.
 
-## Workflows
+## Project Overview
 
-1. **Update Configuration Files**
+Provide a brief overview of the project, highlighting its goals and significance.
 
-   - `config.yaml`
-   - `secrets.yaml` (Optional)
-   - `params.yaml`
+## Project Setup
 
-2. **Update Entity and Configuration Manager**
+### 1. Update Configuration Files
 
-   - Update the entity
-   - Update the configuration manager in `src/config`
+Before diving into the project, make sure to customize essential configuration files:
 
-3. **Update Components**
+- `config.yaml`: Modify global settings.
+- `params.yaml`: Adjust parameters for model training and evaluation.
 
-   - Update the components
+### 2. Update Entity and Configuration Manager
 
-4. **Update Pipeline**
+Update the entity and configuration manager located in `src/config` to align them with your project requirements.
 
-   - Update the pipeline
+### 3. Update Components
 
-5. **Update Main Script**
+Review and customize various components as needed for your specific use case.
 
-   - Update the `main.py`
+### 4. Update Pipeline
 
-6. **Update DVC Configuration**
-   - Update the `dvc.yaml`
+Tailor the pipeline to suit your dataset, model architecture, and training objectives.
+
+### 5. Update Main Script
+
+Customize the `main.py` script to incorporate any additional functionalities or specific requirements.
+
+### 6. Update DVC Configuration
+
+Adjust the `dvc.yaml` file to capture changes effectively during the project lifecycle.
 
 ## How to Run?
+
+Follow these steps to set up and run the application:
 
 ### Step 1: Clone the Repository
 
 ```bash
-https://github.com/RaflyQowi/End-to-End-DL-Monkeypox-Skin.git
+git clone https://github.com/RaflyQowi/End-to-End-DL-Monkeypox-Skin.git
 ```
 
-### Step 2: Create a Python Virtual Environment
+````
+
+### Step 2: Set Up Python Virtual Environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate    # On Windows, use `.\cnncls\Scripts\activate`
+source venv/bin/activate    # On Windows, use `.\venv\Scripts\activate`
 ```
 
 ### Step 3: Install Requirements
@@ -63,24 +72,34 @@ Open your local host and port in a web browser.
 
 ## DVC Commands
 
-1. Initialize DVC
+Leverage DVC for versioning and managing your data science projects:
+
+1. **Initialize DVC**
 
    ```bash
    dvc init
    ```
 
-2. Reproduce DVC Pipeline
+2. **Reproduce DVC Pipeline**
 
    ```bash
    dvc repro
    ```
 
-3. View DVC DAG (Directed Acyclic Graph)
+3. **View DVC DAG (Directed Acyclic Graph)**
+
    ```bash
    dvc dag
    ```
 
+## Troubleshooting
+
+Include a troubleshooting section to address common issues users may encounter during setup or execution.
+
+Feel free to customize and adapt the instructions to suit your needs!
+
 ```
 
-Feel free to adjust it further according to your preferences!
+This version includes a "Project Overview" section, which can briefly describe the project's goals and significance. Additionally, I've added a "Troubleshooting" section to help users address common issues. Adjust as needed!
 ```
+````
