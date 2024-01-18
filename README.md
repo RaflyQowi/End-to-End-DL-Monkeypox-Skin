@@ -1,8 +1,6 @@
-# Chicken Disease Classification Project
+# MLOps on Image Classifications (Monkey Pox classification problem)
 
-## Overview
-
-Welcome to the Chicken Disease Classification Project! This repository is designed for learning MLOps using TensorFlow for deep learning, TensorBoard for tracking callbacks, and DVC for building pipelines. The project provides a hands-on experience to understand and implement MLOps concepts in a real-world scenario.
+Welcome to the MLOps on Image Classifications Project! This repository is designed for learning MLOps using TensorFlow for deep learning, TensorBoard for tracking callbacks, and DVC for building pipelines. The project provides a hands-on experience to understand and implement MLOps concepts in a real-world scenario.
 
 ## Workflows
 
@@ -37,14 +35,14 @@ Welcome to the Chicken Disease Classification Project! This repository is design
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/entbappy/Chicken-Disease-Classification--Project
+https://github.com/RaflyQowi/End-to-End-DL-Monkeypox-Skin.git
 ```
 
-### Step 2: Create a Conda Environment
+### Step 2: Create a Python Virtual Environment
 
 ```bash
-conda create -n cnncls python=3.8 -y
-conda activate cnncls
+python -m venv venv
+source venv/bin/activate    # On Windows, use `.\cnncls\Scripts\activate`
 ```
 
 ### Step 3: Install Requirements
@@ -63,7 +61,7 @@ python app.py
 
 Open your local host and port in a web browser.
 
-### DVC Commands
+## DVC Commands
 
 1. Initialize DVC
 
@@ -82,11 +80,7 @@ Open your local host and port in a web browser.
    dvc dag
    ```
 
-**Note: This Project is for Learning MLOps**
-
-This project is focused on learning MLOps practices using TensorFlow, TensorBoard, and DVC. It is not aimed at achieving the highest accuracy in a classification problem. Instead, it provides a practical hands-on experience for understanding and implementing MLOps concepts in a real-world scenario.
-
 ```
 
-Feel free to modify it further based on your specific needs or preferences!
+Feel free to adjust it further according to your preferences!
 ```
