@@ -95,7 +95,3 @@ Leverage DVC for versioning and managing your data science projects:
 Include a troubleshooting section to address common issues users may encounter during setup or execution.
 
 Feel free to customize and adapt the instructions to suit your needs!
-
-```
-This version includes a "Project Overview" section, which can briefly describe the project's goals and significance. Additionally, I've added a "Troubleshooting" section to help users address common issues. Adjust as needed!
-```
