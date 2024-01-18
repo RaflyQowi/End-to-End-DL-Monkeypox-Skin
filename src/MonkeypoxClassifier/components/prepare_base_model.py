@@ -8,7 +8,7 @@ class PrepareBaseModel:
         self.config = config
     
     def get_base_model(self):
-        self.model = tf.keras.applications.EfficientNetV2S(
+        self.model = tf.keras.applications.EfficientNetV2B0(
             include_top=self.config.params_include_top,
             weights=self.config.params_weights,
             input_shape= self.config.params_image_size
@@ -25,21 +25,15 @@ class PrepareBaseModel:
             for layer in model.layers[:-freeze_till]:
                 layer.trainable = False
 
-        # add new classifier layers
-        flatten_in = tf.keras.layers.Flatten()(model.output)
-        prediction = tf.keras.layers.Dense(
-            units = classes,
-            activation = "softmax"
-        )(flatten_in)
+        # Create a Sequential model for the new classifier layers
+        x = tf.keras.layers.Flatten()(model.output)
+        x = tf.keras.layers.Dense(units=256, activation="relu")(x)
+        prediction = tf.keras.layers.Dense(units=classes, activation="softmax")(x)
 
-        # define new model
-        full_model = tf.keras.models.Model(
-            inputs = model.input,
-            outputs = prediction
-        )
-
+        # Define new model
+        full_model = tf.keras.models.Model(inputs=model.input, outputs=prediction)
         full_model.compile(
-            optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate),
+            optimizer = tf.keras.optimizers.SGD(learning_rate = learning_rate),
             loss = tf.keras.losses.CategoricalCrossentropy(),
             metrics = ["accuracy"]
         )

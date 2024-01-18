@@ -1,0 +1,133 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src\MonkeypoxClassifier\pipeline\stage_01_data_ingestion.py
+    deps:
+    - path: config\config.yaml
+      hash: md5
+      md5: 7e769a354995b7522b9dcd8f261b8f4d
+      size: 813
+    - path: src\MonkeypoxClassifier\pipeline\stage_01_data_ingestion.py
+      hash: md5
+      md5: 88595d0515f03f97d4c823526b85103f
+      size: 922
+    outs:
+    - path: artifacts\data_ingestion\Monkey Pox Image
+      hash: md5
+      md5: bc96c05f28a74b5daabdbc2c016b4000.dir
+      size: 1489650
+      nfiles: 228
+  prepare_base_model:
+    cmd: python src\MonkeypoxClassifier\pipeline\stage_02_prepare_base_model.py
+    deps:
+    - path: config\config.yaml
+      hash: md5
+      md5: 7e769a354995b7522b9dcd8f261b8f4d
+      size: 813
+    - path: params.yaml
+      hash: md5
+      md5: 4a80b553a8d44ef065794c469dab89db
+      size: 148
+    - path: src\MonkeypoxClassifier\components\prepare_base_model.py
+      hash: md5
+      md5: b37ff717be3922b37084421ef797da4c
+      size: 2157
+    - path: src\MonkeypoxClassifier\pipeline\stage_02_prepare_base_model.py
+      hash: md5
+      md5: 9354b1e8f4d3d8beb8ebfcfdce5749fd
+      size: 963
+    params:
+      params.yaml:
+        CLASSES: 2
+        IMAGE_SIZE:
+        - 300
+        - 300
+        - 3
+        INCLUDE_TOP: false
+        LEARNING_RATE: 0.0008
+        WEIGHTS: imagenet
+    outs:
+    - path: artifacts\prepare_base_model
+      hash: md5
+      md5: 52459a3b9157f69553005011de134010.dir
+      size: 179962688
+      nfiles: 2
+  training:
+    cmd: python src\MonkeypoxClassifier\pipeline\stage_03_training.py
+    deps:
+    - path: artifacts\data_ingestion\Monkey Pox Image
+      hash: md5
+      md5: bc96c05f28a74b5daabdbc2c016b4000.dir
+      size: 1489650
+      nfiles: 228
+    - path: artifacts\prepare_base_model
+      hash: md5
+      md5: 21b1c1ab9c2015c6b7ca7d948e6737d9.dir
+      size: 179962688
+      nfiles: 2
+    - path: config\config.yaml
+      hash: md5
+      md5: 7e769a354995b7522b9dcd8f261b8f4d
+      size: 813
+    - path: params.yaml
+      hash: md5
+      md5: 4a80b553a8d44ef065794c469dab89db
+      size: 148
+    - path: src\MonkeypoxClassifier\components\prepare_callbacks.py
+      hash: md5
+      md5: 27c65533f068fac8f01f39de3a813858
+      size: 946
+    - path: src\MonkeypoxClassifier\components\training.py
+      hash: md5
+      md5: df1a732d7d965b5ca1d2fa400c4d7ef1
+      size: 2468
+    - path: src\MonkeypoxClassifier\pipeline\stage_03_training.py
+      hash: md5
+      md5: 82620232821a4f73062430518c5b6ff7
+      size: 1207
+    params:
+      params.yaml:
+        AUGMENTATION: true
+        BATCH_SIZE: 8
+        EPOCHS: 15
+        IMAGE_SIZE:
+        - 300
+        - 300
+        - 3
+    outs:
+    - path: artifacts\training\model.h5
+      hash: md5
+      md5: 8d893acdff46a9b1257bbd2746a30284
+      size: 286602824
+  Evalutation:
+    cmd: python src\MonkeypoxClassifier\pipeline\stage_04_evaluation.py
+    deps:
+    - path: artifacts\data_ingestion\Monkey Pox Image
+      hash: md5
+      md5: bc96c05f28a74b5daabdbc2c016b4000.dir
+      size: 1489650
+      nfiles: 228
+    - path: artifacts\training\model.h5
+      hash: md5
+      md5: 8d893acdff46a9b1257bbd2746a30284
+      size: 286602824
+    - path: config\config.yaml
+      hash: md5
+      md5: 7e769a354995b7522b9dcd8f261b8f4d
+      size: 813
+    - path: src\MonkeypoxClassifier\pipeline\stage_04_evaluation.py
+      hash: md5
+      md5: 2f95d2f3aa62cc4d6ba624d8aca0d039
+      size: 886
+    params:
+      params.yaml:
+        BATCH_SIZE: 8
+        IMAGE_SIZE:
+        - 300
+        - 300
+        - 3
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: 64a32298b995aa8465013d2572442430
+      size: 73
